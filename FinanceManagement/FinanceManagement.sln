@@ -11,15 +11,20 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Adapters", "Adapters", "{09
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CoreBusiness", "CoreBusiness", "{469F06F9-F4DC-4D6F-AAF9-D7DF6DE54326}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "src\Adapters\WebApi\WebApi.csproj", "{AFB05B9E-B668-4131-AD88-AAE6FEC37936}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "src\Adapters\WebApi\WebApi.csproj", "{AFB05B9E-B668-4131-AD88-AAE6FEC37936}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure.SqlServer", "src\Adapters\Infrastructure.SqlServer\Infrastructure.SqlServer.csproj", "{6123CDA4-6DB0-4A13-ADBD-1A5B364D734E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure.SqlServer", "src\Adapters\Infrastructure.SqlServer\Infrastructure.SqlServer.csproj", "{6123CDA4-6DB0-4A13-ADBD-1A5B364D734E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "src\CoreBusiness\Application\Application.csproj", "{1285BEC0-E637-41EF-A363-DC15081D3776}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "src\CoreBusiness\Application\Application.csproj", "{1285BEC0-E637-41EF-A363-DC15081D3776}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "src\CoreBusiness\Domain\Domain.csproj", "{96295783-3564-4F7B-852F-BEFC358B84EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "src\CoreBusiness\Domain\Domain.csproj", "{96295783-3564-4F7B-852F-BEFC358B84EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "test\UnitTest\UnitTest.csproj", "{77968982-84BB-487D-8C85-0D6A1E66967D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "test\UnitTest\UnitTest.csproj", "{77968982-84BB-487D-8C85-0D6A1E66967D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{A853D591-9BAA-469E-AD49-994021FBF595}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
