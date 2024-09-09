@@ -1,10 +1,10 @@
-﻿using Application.Contracts.ViewModels;
+﻿using Application.Contracts;
 using Domain.Modules.Accounts.Aggregates;
 using Domain.Modules.Accounts.Entities.Profile;
 using Domain.Modules.Accounts.ValueObjects.Address;
-using Domain.Modules.Accounts.ValueObjects.Transactions;
 using Domain.Modules.Budgets.Aggregates;
 using Domain.Modules.Budgets.ValueObjects.Categories;
+using Domain.Modules.Budgets.ValueObjects.Transactions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.SqlServer.Database.Contexts;
@@ -24,9 +24,9 @@ public class FinanceManagementContext : DbContext
     #endregion
 
     #region Views
-    public DbSet<BalanceViewModel> BalanceView { get; set; }
-    public DbSet<CategoryViewModel> CategoryView { get; set; }
-    public DbSet<TransactionViewModel> TransactionView { get; set; }
+    public DbSet<ViewModel.BalanceViewModel> BalanceViewModel { get; set; }
+    public DbSet<ViewModel.CategoryViewModel> CategoryViewModel { get; set; }
+    public DbSet<ViewModel.TransactionViewModel> TransactionViewModel { get; set; }
     #endregion
 
     public FinanceManagementContext(DbContextOptions options)
@@ -35,9 +35,9 @@ public class FinanceManagementContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
-        modelBuilder.Entity<BalanceViewModel>().HasNoKey().ToView(nameof(BalanceViewModel));
-        modelBuilder.Entity<CategoryViewModel>().HasNoKey().ToView(nameof(CategoryViewModel));
-        modelBuilder.Entity<TransactionViewModel>().HasNoKey().ToView(nameof(TransactionViewModel));
+        modelBuilder.Entity<ViewModel.BalanceViewModel>().HasNoKey().ToView(nameof(ViewModel.BalanceViewModel));
+        modelBuilder.Entity<ViewModel.CategoryViewModel>().HasNoKey().ToView(nameof(ViewModel.CategoryViewModel));
+        modelBuilder.Entity<ViewModel.TransactionViewModel>().HasNoKey().ToView(nameof(ViewModel.TransactionViewModel));
     }
 
     protected override void ConfigureConventions(ModelConfigurationBuilder configurationBuilder)

@@ -9,7 +9,6 @@ public class Budget : AggregateRoot
     public Guid OwnerId { get; private set; }
     public DateOnly ReferencePeriod { get; private set; }
     public decimal TotalValue { get; private set; }
-    public Category Category { get; private set; }
     public IEnumerable<Category> Categories
         => _categories.AsReadOnly();
 
@@ -27,5 +26,10 @@ public class Budget : AggregateRoot
     {
         TotalValue = totalValue;
     }
-
+    public void RegisterTransaction(string category, DateTime createAt, string description, decimal value)
+    {
+        _categories
+            .Single(c => c.Name.Equals(category, StringComparison.OrdinalIgnoreCase))
+            .RegisterTransaction(createAt, description, value);
+    }
 }

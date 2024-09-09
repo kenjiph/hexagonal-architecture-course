@@ -1,5 +1,6 @@
 ﻿using Domain.Modules.Budgets.Aggregates;
 using Domain.Modules.Budgets.ValueObjects.Categories;
+using Domain.Modules.Budgets.ValueObjects.Transactions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -11,6 +12,13 @@ public class BudgetConfiguration : IEntityTypeConfiguration<Budget>
     {
         builder.ToTable(nameof(Budget));
         builder.HasKey(budget => budget.Id);
+
+        builder
+            .Property(prop => prop.ReferencePeriod)
+            .HasConversion(
+                dateOnly => dateOnly.ToDateTime(TimeOnly.MinValue),
+                dateTime => DateOnly.FromDateTime(dateTime));
+
         builder
             .OwnsMany(
                 account => account.Categories,
@@ -19,6 +27,16 @@ public class BudgetConfiguration : IEntityTypeConfiguration<Budget>
                     categoryNavigationBuilder.ToTable(nameof(Category));
                     categoryNavigationBuilder.Property<int>("Id").IsRequired();
                     categoryNavigationBuilder.HasKey("Id");
+
+                    categoryNavigationBuilder.OwnsMany(
+                        account => account.Transactions,
+                        transactionNavigationBuilder =>
+                        {
+                            transactionNavigationBuilder.ToTable(nameof(Transaction));
+                            transactionNavigationBuilder.Property<int>("Id").IsRequired();
+                            transactionNavigationBuilder.HasKey("Id");
+                        }
+                    );
                 }
             );
     }
